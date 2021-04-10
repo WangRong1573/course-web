@@ -15,9 +15,11 @@
             $("#btn").click(function () {
                 $.ajax({
                     url:"one",
-                    dataType:"text",
+                    dataType:"json",
                     success:function (resp) {
-                        $("#demo").html(resp);
+                        alert(resp);
+                        console.log(resp.name);
+                        console.log(resp.age);
                     }
                 })
             })
@@ -26,11 +28,5 @@
 </head>
 <body>
 <button id="btn">点击显示文字</button>
-<div id="demo" style="height: 200px;width: 200px;background-color: aqua">
-
-</div>
-<div style="height: 200px;width: 200px;background-color:palevioletred">
-我是第二个div，我不会改变内容
-</div>
 </body>
 </html>

@@ -17,6 +17,8 @@ import java.io.IOException;
 public class OneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print("123456");
+        String str = "{\"name\":\"mike\",\"age\":\"18\"}";
+        //{"name":"mike","age":"18"}
+        resp.getWriter().print(str);
     }
 }
