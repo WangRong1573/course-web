@@ -10,4 +10,7 @@
         select id,name,age from t_student order by id desc ;
     </select>
 
+    <insert id="addStudent">
+        insert into t_student(name,age) values (#{name},#{age});
+    </insert>
 </mapper>
