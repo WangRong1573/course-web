@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * tip：好好学习，天天向上！坚持
@@ -17,14 +18,15 @@ import java.io.InputStream;
  * @Date 2021/4/11
  **/
 
-public class Test01 {
+public class Test02 {
     public static void main(String[] args) throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession();
-        Integer id = 2;
-        Student student = session.selectOne("test1.selectOneStudent",id);
-        System.out.println(student);
+        List<Student> students = session.selectList("test1.selectStudents");
+        for (Student student:students){
+            System.out.println(student);
+        }
     }
 }
