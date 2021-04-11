@@ -30,7 +30,7 @@ public class SqlSessionUtil {
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
 
-    public SqlSession getSession(){
+    public static SqlSession getSession(){
         SqlSession session = threadLocal.get();
         if (session == null){
             session = sqlSessionFactory.openSession();
