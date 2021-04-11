@@ -13,4 +13,12 @@
     <insert id="addStudent">
         insert into t_student(name,age) values (#{name},#{age});
     </insert>
+
+    <update id="update">
+        update t_student set name=#{name},age=#{age} where id=#{id};
+    </update>
+
+    <delete id="del">
+        delete from t_student where id=#{id};
+    </delete>
 </mapper>
