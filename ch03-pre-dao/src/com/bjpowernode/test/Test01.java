@@ -1,13 +1,11 @@
 package com.bjpowernode.test;
 
 import com.bjpowernode.domain.Student;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import com.bjpowernode.service.StudentService;
+import com.bjpowernode.service.impl.StudentServiceImpl;
+import com.bjpowernode.util.ServiceFactory;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * tip：好好学习，天天向上！坚持
@@ -18,13 +16,15 @@ import java.io.InputStream;
  **/
 
 public class Test01 {
-    public static void main(String[] args) throws IOException {
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
-        Integer id = 2;
-        Student student = session.selectOne("test1.selectOneStudent",id);
-        System.out.println(student);
+    public static void main(String[] args) {
+        StudentService service = (StudentService) ServiceFactory.getProxy(new StudentServiceImpl());
+        /*Student student = new Student();
+        student.setId(null);
+        student.setName("蔡徐坤");
+        student.setAge(30);
+        service.save(student);*/
+
+        Student stu = service.getById(2);
+        System.out.println(stu);
     }
 }
